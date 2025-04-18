@@ -63,7 +63,7 @@ function New-AstroProject
     Deploys a new Astro project "D:\Demo\astro-test" using the "astro-space" template and automatically starts the development web server after the deployment has completed.
 
     .LINK
-    https://github.com/Smart-Ace-Designs/New-AstroProject
+    https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff
     #>
 
     [CmdletBinding()]
