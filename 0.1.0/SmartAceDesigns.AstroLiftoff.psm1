@@ -8,7 +8,7 @@ This module provides a function for generating a new Astro project from a custom
 ============================================================================================================================
 #>
 
-function New-AstroProject
+function New-SADAstroProject
 {
     <#
     .SYNOPSIS
@@ -49,14 +49,14 @@ function New-AstroProject
     Specifies whether to launch VSCode for the project directory, post deployment.
 
     .EXAMPLE
-    PS C:\>New-AstroProject -ProjectName astro-test -Location D:\Demo -Template astro-space
+    PS C:\>New-SADAstroProject -ProjectName astro-test -Location D:\Demo -Template astro-space
 
     Description
     -----------
     Deploys a new Astro project "D:\Demo\astro-test" using the "astro-space" template.
 
     .EXAMPLE
-    PS C:\>New-AstroProject -ProjectName astro-test -Location D:\Demo -Template astro-space -StartApp
+    PS C:\>New-SADAstroProject -ProjectName astro-test -Location D:\Demo -Template astro-space -StartApp
 
     Description
     -----------
@@ -67,6 +67,7 @@ function New-AstroProject
     #>
 
     [CmdletBinding()]
+    [Alias("New-AstroProject")]
     Param
     (
         [Parameter(Mandatory = $true)] [string]$ProjectName,
