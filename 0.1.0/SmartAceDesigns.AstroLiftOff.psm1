@@ -1,0 +1,149 @@
+﻿<#
+============================================================================================================================
+Module: SmartAceDesigns.AstroLiftoff
+Author: Smart Ace Designs
+
+Notes:
+This module provides a function for generating a new Astro project from a custom template.
+============================================================================================================================
+#>
+
+function New-AstroProject
+{
+    <#
+    .SYNOPSIS
+    Generates a new Astro project from a custom template.
+
+    .DESCRIPTION
+    This function generates a new Astro project based on a custom template hosted by "https://github.com/Smart-Ace-Designs". This includes:
+    
+    - Using the Astro create-astro@latest CLI to deploy the initial template.
+    - Navigating to the project folder and peforming an initial install.
+    - Using the Astro @astrojs/upgrade CLI to update key Astro packages.
+    - Using bun to update support packages.
+    - Initializing a git repository.
+    - Creating additional support directories and .env file.
+    - Using the prettier CLI to provide an intial format of all project files.
+    - Providing an option to launch the site and/or open the project folder with VS Code post deployment.
+    - Clearing the README.md file.
+    
+    .PARAMETER ProjectName
+    Specifies the name to use for the project directory.
+
+    .PARAMETER Location
+    Specifies the root directory path of the new Astro project directory.
+
+    .PARAMETER Template
+    Specifies the name of the custom Astro template to use:
+
+    - astro-major-tom
+    - astro-marsrover
+    - astro-moonbase
+    - astro-space
+    - astro-starbreeze
+
+    .PARAMETER StartApp
+    Specifies whether to launch the development web server (http://localhost:4321) for the site, post deployment.
+
+    .PARAMETER StartCode
+    Specifies whether to launch VSCode for the project directory, post deployment.
+
+    .EXAMPLE
+    PS C:\>New-AstroProject -ProjectName astro-test -Location D:\Demo -Template astro-space
+
+    Description
+    -----------
+    Deploys a new Astro project "D:\Demo\astro-test" using the "astro-space" template.
+
+    .EXAMPLE
+    PS C:\>New-AstroProject -ProjectName astro-test -Location D:\Demo -Template astro-space -StartApp
+
+    Description
+    -----------
+    Deploys a new Astro project "D:\Demo\astro-test" using the "astro-space" template and automatically starts the development web server after the deployment has completed.
+
+    .LINK
+    https://github.com/Smart-Ace-Designs/New-AstroProject
+    #>
+
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory = $true)] [string]$ProjectName,
+        [Parameter(Mandatory = $true)] [string]$Location,
+        [Parameter(Mandatory = $true)] [ValidateSet(
+            "astro-major-tom",
+            "astro-marsrover",
+            "astro-moonbase",
+            "astro-space",
+            "astro-starbreeze"
+        )] [string]$Template,
+        [Parameter(Mandatory = $false)] [switch]$StartApp,
+        [Parameter(Mandatory = $false)] [switch]$StartCode,
+        [Parameter(Mandatory = $false)] [ValidateSet(
+            "bun",
+            "npm"
+        )] [string]$PackageManager = "bun"
+    )
+
+    switch ($PackageManager)
+    {
+        "bun" {$PackageManagerX = "bunx"}
+        "npm" {$PackageManagerX = "npx"}
+    }
+
+    Clear-Host
+    $Message = "Astro Deployment Tool"
+    $Width = $Host.UI.RawUI.WindowSize.Width
+    Write-Host
+    Write-Host ((" " * ($Width - $Message.Length)) + $Message) -ForegroundColor Green
+    Write-Host ("=" * $Width)
+
+    if (Test-Path -Path "$Location\$ProjectName")
+    {
+        Write-Host "`nProject folder ($ProjectName) already exists."
+        Write-Host "Operation cancelled...liftoff failed!"
+        return
+    }
+
+    Set-Location $Location
+    & $PackageManagerX create-astro@latest -- --template smart-ace-designs/$($Template) `
+        --git --no-install $ProjectName
+
+    if (!(Test-Path -Path $ProjectName))
+    {
+        Write-Host "`nProject folder ($ProjectName) was not created."
+        Write-Host "Operation cancelled...liftoff failed!"
+        Write-Host "`nIf using Bun please run `"bun pm cache rm`" to clear the cache and try again."
+        return
+    }
+    
+    Write-Host
+    Set-Location $ProjectName
+    switch ($PackageManager)
+    {
+        "bun" {& $PackageManager install --no-summary}
+        "npm" {& $PackageManager install --silent}
+    }
+
+    & $PackageManagerX @astrojs/upgrade
+    & $PackageManager update --silent --save
+
+    if (!(Test-Path -Path "src/components"))
+    {
+        [void](New-Item -Name "components" -Path src -ItemType Directory)
+    }
+    if (!(Test-Path -Path "src/assets"))
+    {
+        [void](New-Item -Name "assets" -Path src -ItemType Directory)
+    }
+    Clear-Content -Path "README.md"
+
+    Write-Host
+    & $PackageManagerX prettier . --write --log-level silent
+    & $PackageManagerX prettier . --check
+    if ($StartCode -and (Get-Command code -ErrorAction SilentlyContinue)) {code .}
+    Write-Host
+    Write-Host ("=" * $Width)
+    if ($StartApp) {& $PackageManager run dev}
+}
