@@ -1,4 +1,4 @@
-# New-AstroProject
+# SmartAceDesigns.AstroLiftoff
 A PowerShell module to deploy a Smart-Ace-Designs Astro project template.
 
 ```sh
