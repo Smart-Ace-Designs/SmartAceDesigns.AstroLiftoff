@@ -1,5 +1,64 @@
 function New-AstroProject
 {
+    <#
+    .SYNOPSIS
+    Generates a new Astro project from a custom template.
+
+    .DESCRIPTION
+    This is a standalone version of the "New-SADAstroProject" function, included in the "SmartAceDesigns.AstroLiftoff" PowerShell module. It generates a new Astro project based on a custom template hosted by "https://github.com/Smart-Ace-Designs".
+    This includes:
+    
+    - Using the Astro create-astro@latest CLI to deploy the initial template.
+    - Navigating to the project folder and peforming an initial install.
+    - Using the Astro @astrojs/upgrade CLI to update key Astro packages.
+    - Using bun to update support packages.
+    - Initializing a git repository.
+    - Creating additional support directories and .env file.
+    - Using the prettier CLI to provide an intial format of all project files.
+    - Providing an option to launch the site and/or open the project folder with VS Code post deployment.
+    - Clearing the README.md file.
+
+    This function can be added to your "Microsoft.PowerShell_profile.ps1", or similar, PowerShell profile file in lieu of using the "SmartAceDesigns.AstroLiftoff" module.
+    
+    .PARAMETER ProjectName
+    Specifies the name to use for the project directory.
+
+    .PARAMETER Location
+    Specifies the root directory path of the new Astro project directory.
+
+    .PARAMETER Template
+    Specifies the name of the custom Astro template to use:
+
+    - astro-major-tom
+    - astro-marsrover
+    - astro-moonbase
+    - astro-space
+    - astro-starbreeze
+
+    .PARAMETER StartApp
+    Specifies whether to launch the development web server (http://localhost:4321) for the site, post deployment.
+
+    .PARAMETER StartCode
+    Specifies whether to launch VSCode for the project directory, post deployment.
+
+    .EXAMPLE
+    PS C:\>New-AstroProject -ProjectName astro-test -Location D:\Demo -Template astro-space
+
+    Description
+    -----------
+    Deploys a new Astro project "D:\Demo\astro-test" using the "astro-space" template.
+
+    .EXAMPLE
+    PS C:\>New-AstroProject -ProjectName astro-test -Location D:\Demo -Template astro-space -StartApp
+
+    Description
+    -----------
+    Deploys a new Astro project "D:\Demo\astro-test" using the "astro-space" template and automatically starts the development web server after the deployment has completed.
+
+    .LINK
+    https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff
+    #>
+
     [CmdletBinding()]
     Param
     (
