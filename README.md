@@ -7,8 +7,8 @@ This repository contains two items:
 
 ## Examples
 ```sh
-New-SADAstroProject -ProjectName name -Location directory -Template template-name -PackageManager name
+New-SADAstroProject -ProjectName name -Location directory -Template templatename -PackageManager name
 ```
 ```sh
-New-AstroProject -ProjectName name -Location directory -Template template-name -PackageManager name
+New-AstroProject -ProjectName name -Location directory -Template templatename -PackageManager name
 ```
