@@ -36,10 +36,13 @@ function New-AstroProject
     - astro-starbreeze
 
     .PARAMETER StartApp
-    Specifies whether to launch the development web server (http://localhost:4321) for the site, post deployment.
+    Specifies whether to launch the development web server (http://localhost:4321) for the project, post deployment.
 
     .PARAMETER StartCode
-    Specifies whether to launch VSCode for the project directory, post deployment.
+    Specifies whether to open the project folder with VS Code, post deployment.
+
+    .PARAMETER PackageManager
+    Specifies which package manager to use (npm | bun) with the template.
 
     .EXAMPLE
     PS C:\>New-AstroProject -ProjectName astro-test -Location D:\Demo -Template astro-space
