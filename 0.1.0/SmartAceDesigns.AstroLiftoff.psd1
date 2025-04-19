@@ -41,7 +41,7 @@ PrivateData = @{
     }
 }
 
-FunctionsToExport = @('New-AstroProject')
+FunctionsToExport = @('New-SADAstroProject')
 CmdletsToExport = '*'
 VariablesToExport = '*'
 AliasesToExport = '*'
