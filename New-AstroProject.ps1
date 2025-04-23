@@ -30,10 +30,10 @@ function New-AstroProject
     Specifies the name of the custom Astro template to use:
 
     - astro-major-tom (Astro | Component homepage)
-    - astro-marsrover (Astro | Vue | Nuxt UI)
+    - astro-marsrover (Astro | Vue | Nuxt UI | Blank homepage)
     - astro-moonbase (Astro | Vue | shadcn-vue | Component homepage)
-    - astro-space (Astro | Empty homepage)
-    - astro-starbreeze (Astro | Starwind UI)
+    - astro-space (Astro | Blank homepage)
+    - astro-starbreeze (Astro | Starwind UI | Blank homepage)
 
     .PARAMETER StartApp
     Specifies whether to launch the development web server (http://localhost:4321) for the project, post deployment.
