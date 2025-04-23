@@ -29,9 +29,9 @@ function New-AstroProject
     .PARAMETER Template
     Specifies the name of the custom Astro template to use:
 
-    - astro-major-tom (Astro | Initial component homepage)
+    - astro-major-tom (Astro | Component homepage)
     - astro-marsrover (Astro | Vue | Nuxt UI)
-    - astro-moonbase (Astro | Vue | shadcn-vue)
+    - astro-moonbase (Astro | Vue | shadcn-vue | Component homepage)
     - astro-space (Astro | Empty homepage)
     - astro-starbreeze (Astro | Starwind UI)
 
