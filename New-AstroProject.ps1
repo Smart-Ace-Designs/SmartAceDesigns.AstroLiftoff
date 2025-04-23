@@ -29,11 +29,11 @@ function New-AstroProject
     .PARAMETER Template
     Specifies the name of the custom Astro template to use:
 
-    - astro-major-tom
-    - astro-marsrover
-    - astro-moonbase
-    - astro-space
-    - astro-starbreeze
+    - astro-major-tom (Astro | Initial component homepage)
+    - astro-marsrover (Astro | Vue | Nuxt UI)
+    - astro-moonbase (Astro | Vue | shadcn-vue)
+    - astro-space (Astro | Empty homepage)
+    - astro-starbreeze (Astro | Starwind UI)
 
     .PARAMETER StartApp
     Specifies whether to launch the development web server (http://localhost:4321) for the project, post deployment.
