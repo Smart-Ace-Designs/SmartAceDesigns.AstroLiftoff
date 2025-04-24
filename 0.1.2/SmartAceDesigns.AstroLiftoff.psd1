@@ -9,7 +9,7 @@ Generated on: 04/15/2025
 
 @{
 RootModule = 'SmartAceDesigns.AstroLiftoff.psm1'
-ModuleVersion = '0.1.1'
+ModuleVersion = '0.1.2'
 CompatiblePSEditions = @('Desktop','Core')
 PowerShellVersion = '5.1'
 GUID = '99d484e4-d391-4b7e-a45d-1adcfbc2da5b'
@@ -19,20 +19,20 @@ Copyright = '(c) 2025 Smart Ace Designs. All rights reserved.'
 Description = @'
 Smart Ace Designs | Astro Lift Off module.  This module contains a function used for deploying a custom Astro template.
 '@
-
 PrivateData = @{
     PSData = @{
         ProjectUri = 'https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff'
         LicenseUri = 'https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff/blob/main/LICENSE'
-        
         ReleaseNotes = @'
+0.1.2 - Beta Release 1 | Patch 2
+- Adds more descriptive text to template names in function help
+
 0.1.1 - Beta Release 1 | Patch 1
 - Adds missing parameter help
 
 0.1.0 - Beta Release 1
 - Initial design of module
 '@
-        
         Tags = @(
                 'Astro',
                 'Tailwind',
@@ -43,7 +43,6 @@ PrivateData = @{
         )
     }
 }
-
 FunctionsToExport = @('New-SADAstroProject')
 CmdletsToExport = '*'
 VariablesToExport = '*'
