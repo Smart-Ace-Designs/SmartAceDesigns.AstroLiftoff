@@ -7,7 +7,7 @@ function New-AstroProject
     .DESCRIPTION
     This is a standalone version of the "New-SADAstroProject" function, included in the "SmartAceDesigns.AstroLiftoff" PowerShell module. It generates a new Astro project based on a custom template hosted by "https://github.com/Smart-Ace-Designs".
     This includes:
-    
+
     - Using the Astro create-astro@latest CLI to deploy the initial template.
     - Navigating to the project folder and peforming an initial install.
     - Using the Astro @astrojs/upgrade CLI to update key Astro packages.
@@ -19,7 +19,7 @@ function New-AstroProject
     - Clearing the README.md file.
 
     This function can be added to your "Microsoft.PowerShell_profile.ps1", or similar, PowerShell profile file in lieu of using the "SmartAceDesigns.AstroLiftoff" module.
-    
+
     .PARAMETER ProjectName
     Specifies the name to use for the project directory.
 
@@ -30,7 +30,6 @@ function New-AstroProject
     Specifies the name of the custom Astro template to use:
 
     - astro-major-tom (Astro | Component homepage)
-    - astro-marsrover (Astro | Vue | Nuxt UI | Blank homepage)
     - astro-moonbase (Astro | Vue | shadcn-vue | Component homepage)
     - astro-space (Astro | Blank homepage)
     - astro-starbreeze (Astro | Starwind UI | Blank homepage)
@@ -69,7 +68,6 @@ function New-AstroProject
         [Parameter(Mandatory = $true)] [string]$Location,
         [Parameter(Mandatory = $true)] [ValidateSet(
             "astro-major-tom",
-            "astro-marsrover",
             "astro-moonbase",
             "astro-space",
             "astro-starbreeze"

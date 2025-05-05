@@ -16,7 +16,7 @@ function New-SADAstroProject
 
     .DESCRIPTION
     This function generates a new Astro project based on a custom template hosted by "https://github.com/Smart-Ace-Designs". This includes:
-    
+
     - Using the Astro create-astro@latest CLI to deploy the initial template.
     - Navigating to the project folder and peforming an initial install.
     - Using the Astro @astrojs/upgrade CLI to update key Astro packages.
@@ -37,7 +37,6 @@ function New-SADAstroProject
     Specifies the name of the custom Astro template to use:
 
     - astro-major-tom (Astro | Component homepage)
-    - astro-marsrover (Astro | Vue | Nuxt UI | Blank homepage)
     - astro-moonbase (Astro | Vue | shadcn-vue | Component homepage)
     - astro-space (Astro | Blank homepage)
     - astro-starbreeze (Astro | Starwind UI | Blank homepage)
@@ -77,7 +76,6 @@ function New-SADAstroProject
         [Parameter(Mandatory = $true)] [string]$Location,
         [Parameter(Mandatory = $true)] [ValidateSet(
             "astro-major-tom",
-            "astro-marsrover",
             "astro-moonbase",
             "astro-space",
             "astro-starbreeze"
