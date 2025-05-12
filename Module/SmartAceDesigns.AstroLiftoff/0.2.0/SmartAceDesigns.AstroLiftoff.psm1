@@ -109,8 +109,17 @@ function New-SADAstroProject
     }
 
     Set-Location $Location
-    & $PackageManagerX create-astro@latest -- --template smart-ace-designs/$($Template) `
-        --git --no-install $ProjectName
+    if (Get-Command -Name git -ErrorAction SilentlyContinue)
+    {
+        & $PackageManagerX create-astro@latest -- --template smart-ace-designs/$($Template) `
+            --git --no-install $ProjectName
+    }
+    else
+    {
+        Write-Host "`nWarning: Git was not detected on this system. Git initialization will be skipped." -ForegroundColor DarkYellow
+        & $PackageManagerX create-astro@latest -- --template smart-ace-designs/$($Template) `
+            --no-git --no-install $ProjectName
+    }
 
     if (!(Test-Path -Path $ProjectName))
     {

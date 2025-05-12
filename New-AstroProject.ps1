@@ -5,7 +5,8 @@ function New-AstroProject
     Generates a new Astro project from a custom template.
 
     .DESCRIPTION
-    This is a standalone version of the "New-SADAstroProject" function, included in the "SmartAceDesigns.AstroLiftoff" PowerShell module. It generates a new Astro project based on a custom template hosted by "https://github.com/Smart-Ace-Designs".
+    This is a standalone version of the "New-SADAstroProject" function, included in the "SmartAceDesigns.AstroLiftoff" PowerShell module.
+    It generates a new Astro project based on a custom template hosted by "https://github.com/Smart-Ace-Designs".
     This includes:
 
     - Using the Astro create-astro@latest CLI to deploy the initial template.
@@ -18,7 +19,7 @@ function New-AstroProject
     - Providing an option to launch the site and/or open the project folder with VS Code post deployment.
     - Clearing the README.md file.
 
-    This function can be added to your "Microsoft.PowerShell_profile.ps1", or similar, PowerShell profile file in lieu of using the "SmartAceDesigns.AstroLiftoff" module.
+    This function can be added to your "Microsoft.PowerShell_profile.ps1" PowerShell profile file in lieu of using the "SmartAceDesigns.AstroLiftoff" module.
 
     .PARAMETER ProjectName
     Specifies the name to use for the project directory.
@@ -101,8 +102,17 @@ function New-AstroProject
     }
 
     Set-Location $Location
-    & $PackageManagerX create-astro@latest -- --template smart-ace-designs/$($Template) `
-        --git --no-install $ProjectName
+    if (Get-Command -Name git -ErrorAction SilentlyContinue)
+    {
+        & $PackageManagerX create-astro@latest -- --template smart-ace-designs/$($Template) `
+            --git --no-install $ProjectName
+    }
+    else
+    {
+        Write-Host "`nWarning: Git was not detected on this system. Git initialization will be skipped." -ForegroundColor DarkYellow
+        & $PackageManagerX create-astro@latest -- --template smart-ace-designs/$($Template) `
+            --no-git --no-install $ProjectName
+    }
 
     if (!(Test-Path -Path $ProjectName))
     {
@@ -111,7 +121,7 @@ function New-AstroProject
         Write-Host "`nIf using Bun please run `"bun pm cache rm`" to clear the cache and try again."
         return
     }
-    
+
     Write-Host
     Set-Location $ProjectName
     switch ($PackageManager)
@@ -136,7 +146,7 @@ function New-AstroProject
     Write-Host
     & $PackageManagerX prettier . --write --log-level silent
     & $PackageManagerX prettier . --check
-    if ($StartCode -and (Get-Command code -ErrorAction SilentlyContinue)) {code .}
+    if ($StartCode -and (Get-Command -Name code -ErrorAction SilentlyContinue)) {code .}
     Write-Host
     Write-Host ("=" * $Width)
     if ($StartApp) {& $PackageManager run dev}

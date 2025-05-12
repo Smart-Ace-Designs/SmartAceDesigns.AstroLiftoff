@@ -9,7 +9,7 @@ Generated on: 04/15/2025
 
 @{
 RootModule = 'SmartAceDesigns.AstroLiftoff.psm1'
-ModuleVersion = '0.1.4'
+ModuleVersion = '0.2.0'
 CompatiblePSEditions = @('Desktop','Core')
 PowerShellVersion = '5.1'
 GUID = '99d484e4-d391-4b7e-a45d-1adcfbc2da5b'
@@ -24,6 +24,9 @@ PrivateData = @{
         ProjectUri = 'https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff'
         LicenseUri = 'https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff/blob/main/LICENSE'
         ReleaseNotes = @'
+0.2.0 - Beta Release 2
+- Adds test for git
+
 0.1.4 - Beta Release 1 | Patch 4
 - Updates list of tags in module manifest
 
