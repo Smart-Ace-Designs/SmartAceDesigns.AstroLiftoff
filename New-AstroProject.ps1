@@ -12,7 +12,7 @@ function New-AstroProject
     - Using the Astro create-astro@latest CLI to deploy the initial template.
     - Navigating to the project folder and peforming an initial install.
     - Using the Astro @astrojs/upgrade CLI to update key Astro packages.
-    - Using bun to update support packages.
+    - Using the selected package manager to update support packages.
     - Initializing a git repository.
     - Creating additional support directories and .env file.
     - Using the prettier CLI to provide an intial format of all project files.
