@@ -94,9 +94,16 @@ function New-AstroProject
     Write-Host ((" " * ($Width - $Message.Length)) + $Message) -ForegroundColor Green
     Write-Host ("=" * $Width)
 
+    if (!(Get-Command -Name $PackageManager -ErrorAction SilentlyContinue))
+    {
+        Write-Host "`nPackage manager ($PackageManager) not found."
+        Write-Host "Operation cancelled...liftoff failed!"
+        return
+    }
+
     if (Test-Path -Path "$Location\$ProjectName")
     {
-        Write-Host "`nProject folder ($ProjectName) already exists."
+        Write-Host "`nProject folder ($ProjectName) already exists. Please select a different project name."
         Write-Host "Operation cancelled...liftoff failed!"
         return
     }

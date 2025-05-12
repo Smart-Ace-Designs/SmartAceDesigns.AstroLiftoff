@@ -12,3 +12,5 @@ New-SADAstroProject -ProjectName name -Location directory -Template tmpl-name -P
 ```sh
 New-AstroProject -ProjectName name -Location directory -Template tmpl-name -PackageManager name
 ```
+
+Note: These PowerShell functions only support the npm and Bun package managers.
