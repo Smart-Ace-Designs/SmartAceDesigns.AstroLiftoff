@@ -25,8 +25,7 @@ function New-SADAstroProject
     - Creating additional support directories and .env file.
     - Using the prettier CLI to provide an intial format of all project files.
     - Providing an option to launch the site and/or open the project folder with VS Code post deployment.
-    - Clearing the README.md file.
-    
+
     .PARAMETER ProjectName
     Specifies the name to use for the project directory.
 
@@ -155,7 +154,6 @@ function New-SADAstroProject
     {
         [void](New-Item -Name "assets" -Path src -ItemType Directory)
     }
-    Clear-Content -Path "README.md"
 
     Write-Host
     & $PackageManagerX prettier . --write --log-level silent

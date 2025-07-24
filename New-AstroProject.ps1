@@ -17,7 +17,6 @@ function New-AstroProject
     - Creating additional support directories and .env file.
     - Using the prettier CLI to provide an intial format of all project files.
     - Providing an option to launch the site and/or open the project folder with VS Code post deployment.
-    - Clearing the README.md file.
 
     This function can be added to your "Microsoft.PowerShell_profile.ps1" PowerShell profile file in lieu of using the "SmartAceDesigns.AstroLiftoff" module.
 
@@ -148,7 +147,6 @@ function New-AstroProject
     {
         [void](New-Item -Name "assets" -Path src -ItemType Directory)
     }
-    Clear-Content -Path "README.md"
 
     Write-Host
     & $PackageManagerX prettier . --write --log-level silent
