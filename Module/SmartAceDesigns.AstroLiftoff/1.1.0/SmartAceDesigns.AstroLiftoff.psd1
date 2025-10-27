@@ -9,7 +9,7 @@ Generated on: 04/15/2025
 
 @{
 RootModule = 'SmartAceDesigns.AstroLiftoff.psm1'
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.1.0'
 CompatiblePSEditions = @('Desktop','Core')
 PowerShellVersion = '5.1'
 GUID = '99d484e4-d391-4b7e-a45d-1adcfbc2da5b'
@@ -24,6 +24,8 @@ PrivateData = @{
         ProjectUri = 'https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff'
         LicenseUri = 'https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff/blob/main/LICENSE'
         ReleaseNotes = @'
+1.1.0
+- Changes from using bunx create-astro@latest to bun create astro@latest
 1.0.0 - Production Release
 - Fixes incorrect ModuleVersion number in PSD1 file
 
