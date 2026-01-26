@@ -24,7 +24,8 @@ function New-SADAstroProject
     - Initializing a git repository.
     - Creating additional support directories and .env file.
     - Using the prettier CLI to provide an intial format of all project files.
-    - Providing an option to launch the site and/or open the project folder with VS Code post deployment.
+    - Providing an option to launch the site post deployment.
+    - Providing an option to open the project folder with VS Code or Zed post deployment.
 
     .PARAMETER ProjectName
     Specifies the name to use for the project directory.
@@ -44,7 +45,10 @@ function New-SADAstroProject
     Specifies whether to launch the development web server (http://localhost:4321) for the project, post deployment.
 
     .PARAMETER StartCode
-    Specifies whether to open the project folder with VS Code, post deployment.
+    Specifies whether to open the project folder with VS Code, post deployment. Cannot be used the with "StartZed" parameter.
+
+    .PARAMETER StartZed
+    Specifies whether to open the project folder with Zed, post deployment. Cannot be used the with "StartCode" parameter.
 
     .PARAMETER PackageManager
     Specifies which package manager to use (npm | bun) with the template.
@@ -80,7 +84,8 @@ function New-SADAstroProject
             "astro-starbreeze"
         )] [string]$Template,
         [Parameter(Mandatory = $false)] [switch]$StartApp,
-        [Parameter(Mandatory = $false)] [switch]$StartCode,
+        [Parameter(ParameterSetName = "Code")] [switch]$StartCode,
+        [Parameter(ParameterSetName = "Zed")] [switch]$StartZed,
         [Parameter(Mandatory = $false)] [ValidateSet(
             "bun",
             "npm"
@@ -158,7 +163,18 @@ function New-SADAstroProject
     Write-Host
     & $PackageManagerX prettier . --write --log-level silent
     & $PackageManagerX prettier . --check
-    if ($StartCode -and (Get-Command code -ErrorAction SilentlyContinue)) {code .}
+
+    switch ($PSCmdlet.ParameterSetName) {
+        "Code" {
+            if (Get-Command -Name code -ErrorAction SilentlyContinue) {code .}
+            else {Write-Warning "`nThe VS Code editor was not found."}
+        }
+        "Zed" {
+            if (Get-Command -Name zed -ErrorAction SilentlyContinue) {zed .}
+            else {Write-Warning "`nThe Zed editor was not found."}
+        }
+    }
+    
     Write-Host
     Write-Host ("=" * $Width)
     if ($StartApp) {& $PackageManager run dev}
