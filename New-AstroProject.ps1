@@ -64,8 +64,8 @@ function New-AstroProject
     .LINK
     https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff
     #>
-
-    [CmdletBinding()]
+        
+    [CmdletBinding(DefaultParameterSetName = "None")]
     Param
     (
         [Parameter(Mandatory = $true)] [string]$ProjectName,

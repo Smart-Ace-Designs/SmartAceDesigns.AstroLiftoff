@@ -71,7 +71,7 @@ function New-SADAstroProject
     https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff
     #>
 
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = "None")]
     [Alias("New-AstroProject")]
     Param
     (
