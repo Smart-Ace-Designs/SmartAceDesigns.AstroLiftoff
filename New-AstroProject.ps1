@@ -105,6 +105,13 @@ function New-AstroProject
         return
     }
 
+    if (!(Test-Path -Path $Location))
+    {
+        Write-Host "`nProject root folder ($Location) does not exist."
+        Write-Host "Operation cancelled...liftoff failed!"
+        return
+    }
+
     if (Test-Path -Path "$Location\$ProjectName")
     {
         Write-Host "`nProject folder ($ProjectName) already exists. Please select a different project name."
