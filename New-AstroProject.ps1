@@ -14,7 +14,6 @@ function New-AstroProject
     - Using the Astro @astrojs/upgrade CLI to update key Astro packages.
     - Using the selected package manager to update support packages.
     - Initializing a git repository.
-    - Creating additional support directories and .env file.
     - Using the prettier CLI to provide an intial format of all project files.
     - Providing an option to launch the site post deployment.
     - Providing an option to open the project folder with VS Code or Zed post deployment.
@@ -150,15 +149,6 @@ function New-AstroProject
 
     & $PackageManagerX @astrojs/upgrade
     & $PackageManager update --silent --save
-
-    if (!(Test-Path -Path "src/components"))
-    {
-        [void](New-Item -Name "components" -Path src -ItemType Directory)
-    }
-    if (!(Test-Path -Path "src/assets"))
-    {
-        [void](New-Item -Name "assets" -Path src -ItemType Directory)
-    }
 
     Write-Host
     & $PackageManagerX prettier . --write --log-level silent
