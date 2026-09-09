@@ -9,7 +9,7 @@ Generated on: 04/15/2025
 
 @{
 RootModule = 'SmartAceDesigns.AstroLiftoff.psm1'
-ModuleVersion = '1.3.0'
+ModuleVersion = '1.4.0'
 CompatiblePSEditions = @('Desktop','Core')
 PowerShellVersion = '5.1'
 GUID = '99d484e4-d391-4b7e-a45d-1adcfbc2da5b'
@@ -24,6 +24,9 @@ PrivateData = @{
         ProjectUri = 'https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff'
         LicenseUri = 'https://github.com/Smart-Ace-Designs/SmartAceDesigns.AstroLiftoff/blob/main/LICENSE'
         ReleaseNotes = @'
+1.4.0
+- Adds "astro-starview" template to the list of available templates
+
 1.3.0
 - Removes creation of empty src/assets and src/components folders
 

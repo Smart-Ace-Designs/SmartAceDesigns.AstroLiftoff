@@ -38,7 +38,8 @@ function New-SADAstroProject
     - astro-major-tom (Astro | Component homepage)
     - astro-moonbase (Astro | Vue | shadcn-vue | Component homepage)
     - astro-space (Astro | Blank homepage)
-    - astro-starbreeze (Astro | Starwind UI | Blank homepage)
+    - astro-starbreeze (Astro | Starwind UI 3 | Blank homepage)
+    - astro-starview (Astro | Vue | Starwind UI 3 | Blank homepage)
 
     .PARAMETER StartApp
     Specifies whether to launch the development web server (http://localhost:4321) for the project, post deployment.
@@ -80,7 +81,8 @@ function New-SADAstroProject
             "astro-major-tom",
             "astro-moonbase",
             "astro-space",
-            "astro-starbreeze"
+            "astro-starbreeze",
+            "astro-starview"
         )] [string]$Template,
         [Parameter(Mandatory = $false)] [switch]$StartApp,
         [Parameter(ParameterSetName = "Code")] [switch]$StartCode,
